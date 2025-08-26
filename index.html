@@ -1,46 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AdaWorld</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptable World Model</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Content sections */
+        .section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .section-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 5px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Team section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        /* Publications */
+        .publication {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .publication:last-child {
+            border-bottom: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <section class="tldr">
-    <h2>TL;DR: AdaWorld is a highly adaptable world model pretrained with continuous latent actions from thousands of environments, enabling zero-shot action transfer, fast adaptation, and new skill acquisition with minimal finetuning.</h2>
-  </section>
-  
-  <section class="images">
-    <img src="prompt.jpg" alt="Prompt">
-    <img src="teaser.jpg" alt="Teaser">
-  </section>
-  
-  <section class="examples">
-    <h3>Robot #1 Robot #2 Robot #3</h3>
-    <div class="gallery">
-      <div>source video → target scene</div>
-      <div>source video → target scene</div>
-      <div>source video → target scene</div>
-    </div>
-    <!-- 同理，再写 Human 和 Game 三类 -->
-  </section>
-  
-  <section class="planning">
-    <h3>AdaWorld enables more effective planning.</h3>
-    <img src="procgen.png" alt="Procgen comparison">
-    <img src="robosuite.png" alt="Robosuite comparison">
-  </section>
-  
-  <section class="encoder">
-    <h3>Latent Action Autoencoder</h3>
-    <img src="autoencoder.png" alt="Latent Action Autoencoder">
-    <p>With an information bottleneck design, our latent action autoencoder is able to extract the most critical action information from videos and compresses it into a continuous latent action.</p>
-  </section>
-  
-  <section class="autoregressive">
-    <h3>Autoregressive World Model</h3>
-    <img src="autoregressive.png" alt="Autoregressive World Model">
-    <p>We extract latent actions from unlabeled videos using the latent action encoder... (描述文字)</p>
-  </section>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Adaptable World Model</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Adaptable World Models for Robotics</h1>
+            <p>Advancing robotic perception and control through adaptable world models that can learn and generalize across diverse environments.</p>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About the Project</h2>
+            <div class="section-content">
+                <div class="card">
+                    <h3>Project Vision</h3>
+                    <p>Our goal is to develop world models that can adapt to changing environments and generalize across tasks, enabling more robust and efficient robotic systems.</p>
+                </div>
+                <div class="card">
+                    <h3>Methodology</h3>
+                    <p>We combine deep learning, reinforcement learning, and probabilistic modeling to create adaptable representations of the world that can be used for planning and control.</p>
+                </div>
+                <div class="card">
+                    <h3>Applications</h3>
+                    <p>Our research has applications in autonomous navigation, manipulation, and other robotic tasks that require understanding and interacting with complex environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="section">
+        <div class="container">
+            <h2 class="section-title">Research Areas</h2>
+            <div class="section-content">
+                <div class="card">
+                    <h3>World Model Learning</h3>
+                    <p>Developing models that can predict future states and outcomes based on current observations and actions.</p>
+                </div>
+                <div class="card">
+                    <h3>Adaptation Mechanisms</h3>
+                    <p>Creating algorithms that allow models to quickly adapt to new environments and tasks with minimal additional data.</p>
+                </div>
+                <div class="card">
+                    <h3>Generalization</h3>
+                    <p>Studying how world models can generalize across different domains, reducing the need for extensive retraining.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title">Research Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Team Member">
+                    <h3>Jane Smith</h3>
+                    <p>Principal Investigator</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Team Member">
+                    <h3>John Doe</h3>
+                    <p>PhD Student</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Team Member">
+                    <h3>Alice Johnson</h3>
+                    <p>Research Scientist</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Team Member">
+                    <h3>Bob Williams</h3>
+                    <p>Postdoctoral Researcher</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="section">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="publications-list">
+                <div class="publication">
+                    <h3>Adaptive World Models for Robotic Navigation</h3>
+                    <p><strong>Authors:</strong> J. Smith, J. Doe, A. Johnson</p>
+                    <p><strong>Conference:</strong> Robotics: Science and Systems, 2023</p>
+                    <p><a href="#">PDF</a> | <a href="#">Code</a></p>
+                </div>
+                <div class="publication">
+                    <h3>Generalizing Across Environments with Meta-World Models</h3>
+                    <p><strong>Authors:</strong> A. Johnson, B. Williams, J. Smith</p>
+                    <p><strong>Conference:</strong> International Conference on Machine Learning, 2022</p>
+                    <p><a href="#">PDF</a> | <a href="#">Code</a></p>
+                </div>
+                <div class="publication">
+                    <h3>Learning Predictive Models for Robotic Control</h3>
+                    <p><strong>Authors:</strong> J. Doe, B. Williams, A. Johnson</p>
+                    <p><strong>Journal:</strong> IEEE Transactions on Robotics, 2022</p>
+                    <p><a href="#">PDF</a> | <a href="#">Code</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h2>Contact Us</h2>
+                <p>Email: contact@adaptable-world-model.org</p>
+                <div class="social-links">
+                    <a href="#">GitHub</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+                <p>&copy; 2023 Adaptable World Model Project</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
